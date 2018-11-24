@@ -16,3 +16,7 @@ deploy:
         tags: true
         repo: Hoishin/use-nodecg
         branch: master
+notifications:
+    slack:
+        rooms:
+            secure: hkTJgltZ+PDwI+Ga3KWiJDI9bZXpIxSxr7gsmzokUwvgzej/7AEOxBAmz+CyE7lHxzwiKVatOCcdtfAJW5rdqwuM2t0/8H4iz3GCpIZO362zCEdO8k6dv/181lU0EMDu56sJmk2ItU3MU9QRLMVCXyP10BT2OSg/hKL2kcBSKy6MIidbKfHy1d66yAj1gP0wwfTuEAcal/oF0qH0ZbeUyn5olr4WPfhGVb8xT+fyD2KYRWeR+PFGtCmkFZ6YQ6dwvL0oYq0DP01JSLgJ5rIiNWIAfq/N9ZTpGrTwgVOrwLLcO3rQOMGlKxJlpsrvI3eMH7WIoXQOEaYGT0Ldat9Mq7RJBrPZxyCATIyXWpQnj1xaa+pZvRtyXq4d6IAlZIUPnT2eWWu88bLQzATABRQKxo5/SUJtSpsF2YDyn7TX3pTUWxDV32zj91IbLf1ArBxYvaBAXE/ECLQqhs73EOha/7XKszG+rVaOKGJnXLeCvYX4as59uRCpOPQe+PJgpZYwGNXH/aGzcKWs/AOP2gj5wEOoWMNPnYtg5Un6kXmN845YLiy2c5spV+kEfW/1fUcQOoA0lqPTF6L3Spfjkyl5U70x/6yZ2Z+IxzZWgOznyJsPaNNtyoNS4oU/MciG7af6Rd4rk0rZpnb6IwjGvcIDgXJDbNhweQBn97LJ/+LW1Wo=
