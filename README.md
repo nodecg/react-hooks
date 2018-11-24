@@ -1,12 +1,12 @@
 # use-nodecg
 
 [![Build Status](https://travis-ci.com/Hoishin/use-nodecg.svg?branch=master)](https://travis-ci.com/Hoishin/use-nodecg)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-![npm version](https://img.shields.io/npm/v/use-nodecg.svg)
-![npm version (next)](https://img.shields.io/npm/v/use-nodecg/next.svg)
-![npm bundle size (minified + gzip)](https://img.shields.io/bundlephobia/minzip/use-nodecg.svg)
-![npm download total](https://img.shields.io/npm/dt/use-nodecg.svg)
-![npm type definitions](https://img.shields.io/npm/types/use-nodecg.svg)
+[![NpmLicense](https://img.shields.io/npm/l/use-nodecg.svg)](https://github.com/Hoishin/use-nodecg/blob/master/LICENSE)
+[![npm version](https://img.shields.io/npm/v/use-nodecg.svg)](https://www.npmjs.com/package/use-nodecg)
+[![npm version (next)](https://img.shields.io/npm/v/use-nodecg/next.svg)](https://www.npmjs.com/package/use-nodecg)
+[![npm bundle size (minified + gzip)](https://img.shields.io/bundlephobia/minzip/use-nodecg.svg)](https://www.npmjs.com/package/use-nodecg)
+[![npm download total](https://img.shields.io/npm/dt/use-nodecg.svg)](https://www.npmjs.com/package/use-nodecg)
+[![npm type definitions](https://img.shields.io/npm/types/use-nodecg.svg)](https://www.typescriptlang.org/)
 [![node version](https://img.shields.io/node/v/use-nodecg.svg)](https://nodejs.org/en/)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
