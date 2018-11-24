@@ -17,7 +17,7 @@ yarn add use-nodecg@next
 ### `useReplicant`
 
 -   Subscribes to specified replicant and returns the value as state.
--   Allows you to use replicant values with function component.
+-   Allows you to use replicant values in function component.
 
 ```ts
 import {useReplicant} from 'use-nodecg';
