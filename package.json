@@ -1,6 +1,6 @@
 {
 	"name": "use-nodecg",
-	"version": "0.0.1-4",
+	"version": "0.1.0-0",
 	"description": "Custom React Hooks for NodeCG",
 	"repository": "https://github.com/hoishin/use-nodecg",
 	"license": "MIT",

@@ -1,3 +1,13 @@
+# [0.1.0-0](https://github.com/hoishin/use-nodecg/compare/v0.0.1-4...v0.1.0-0) (2018-11-24)
+
+### Tests
+
+-   **useReplicant:** Add tests ([94066e7](https://github.com/hoishin/use-nodecg/commit/94066e7))
+
+### BREAKING CHANGES
+
+-   **useReplicant:** Initial value is now required (pass `undefined` if not needed)
+
 ## [0.0.1-4](https://github.com/hoishin/use-nodecg/compare/v0.0.1-3...v0.0.1-4) (2018-11-24)
 
 ### Bug Fixes
