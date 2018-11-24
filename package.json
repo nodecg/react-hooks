@@ -13,7 +13,7 @@
 		"prebuild": "del out",
 		"build": "tsc",
 		"prepublishOnly": "yarn build",
-		"version": "conventional-changelog -p angular-all -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md"
+		"version": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md"
 	},
 	"husky": {
 		"hooks": {
