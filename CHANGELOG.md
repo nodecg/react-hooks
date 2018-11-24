@@ -1,3 +1,9 @@
+## [0.0.1-4](https://github.com/hoishin/use-nodecg/compare/v0.0.1-3...v0.0.1-4) (2018-11-24)
+
+### Bug Fixes
+
+-   **engines:** Allow Node v10 LTS ([2ed3200](https://github.com/hoishin/use-nodecg/commit/2ed3200))
+
 ## [0.0.1-3](https://github.com/hoishin/use-nodecg/compare/v0.0.1-2...v0.0.1-3) (2018-11-24)
 
 ### chore
