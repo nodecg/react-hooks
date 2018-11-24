@@ -1,0 +1,22 @@
+{
+	"compilerOptions": {
+		"target": "es2018",
+		"module": "commonjs",
+		"lib": ["es2018", "dom"],
+		"jsx": "react",
+		"declaration": true,
+		"declarationMap": true,
+		"sourceMap": true,
+		"outDir": "out",
+
+		"strict": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"noImplicitReturns": true,
+		"noFallthroughCasesInSwitch": true,
+
+		"moduleResolution": "node"
+	},
+	"include": ["src", "node_modules/nodecg/types/browser.d.ts"],
+	"exclude": ["**/__tests__"]
+}

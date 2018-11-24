@@ -1,0 +1,16 @@
+dist: xenial
+language: node_js
+node_js:
+    - 10
+script:
+    - yarn build
+deploy:
+    provider: npm
+    email: hoishinxii@gmail.com
+    api_key:
+        secure: BYSBAkaTVyKICKZ8p1deRU9EeTuJblUf5bGxTOxazLin4XSew82STIaVBVtfkOdtj5UDa6IjWNyltHhBmcCkWgXyN9TQWVyUzW202bEf7n7pb7fVmZhXsVCADoDkJClCmKFG2zzS8SUOwmlzsZTnqZGc1+pvsFX8xBkhdPLby0wHfZjik9wzstUTqArJZu1hq6tfCBAb7+5rOgw/7nUE8Z6zznifPzHr5l4VvZLKm14jQF41qJfaYk14fUUPUJyJu181VaqEWrxVpm3vegtqCosSkIVDImHqHpVMK4GVgbo0JBzMjP5if620GYVtk74JKL1M0gCkNB4N1coTMz/WO2kbiOsm4G7SIgRwQNK3Ai/n6inT7GInVWfUyf1/Yh3OyqsGPmbmvDAR9qA+XH2vnfs+CDgLW36uxvHuIaBFANRV4ao0BIZ6B7gHlk1j/aaLfhCbauo8zxZrfnkv7OXY1FSAIGTVm7f0qtsh7XM2FXUY/xfFa/ALvfLvy2YX4Xcj0OljmI6HwhMyqqFzmyXrtc1OTuJr8WsOq0jhuc9slXfZvNQc7SI35uIrEAUM7WF4e2dhDLPjq5RRG64MffDMZZtIRiaYP70BOY/Ljspac47s4fxq7OEwsyVUja1oeH1Vhaf0fmEnlt2+kLd4L/LwZieOK+lemJ6A8t7GpMKk1V4=
+    tag: next
+    on:
+        tag: true
+        repo: Hoishin/use-nodecg
+        branch: master

@@ -1,3 +1,6 @@
 {
-	"extends": "@hoishin/tslint-config"
+	"extends": "@hoishin/tslint-config",
+	"rules": {
+		"no-unsafe-any": false
+	}
 }
