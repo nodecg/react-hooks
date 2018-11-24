@@ -37,6 +37,9 @@
 	"peerDependencies": {
 		"react": "^16.7.0"
 	},
+	"publishConfig": {
+		"access": "public"
+	},
 	"lint-staged": {
 		"*.{ts,tsx}": [
 			"tslint -p . -t stylish --fix",
