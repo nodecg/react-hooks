@@ -13,7 +13,7 @@
 		"prebuild": "del out",
 		"build": "tsc",
 		"prepublishOnly": "yarn build",
-		"preversion": "generate-changelog && git add CHANGELOG.md && git commit -m 'update CHANGELOG'"
+		"version": "conventional-changelog -p angular-all -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md"
 	},
 	"husky": {
 		"hooks": {
@@ -23,8 +23,8 @@
 	"devDependencies": {
 		"@hoishin/tslint-config": "^2.0.2",
 		"@types/react": "^16.7.7",
+		"conventional-changelog-cli": "^2.0.11",
 		"del-cli": "^1.1.0",
-		"generate-changelog": "^1.7.1",
 		"husky": "^1.2.0",
 		"lint-staged": "^8.1.0",
 		"nodecg": "^1.3.0",
