@@ -12,7 +12,7 @@
 	"scripts": {
 		"prebuild": "del out",
 		"build": "tsc",
-		"prepublishOnly": "yarn build",
+		"prepublishOnly": "yarn && yarn build",
 		"version": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md"
 	},
 	"husky": {
