@@ -1,0 +1,43 @@
+{
+	"name": "use-nodecg",
+	"version": "0.0.0",
+	"description": "Custom React Hooks for NodeCG",
+	"repository": "https://github.com/hoishin/use-nodecg",
+	"license": "MIT",
+	"author": "Keiichiro Amemiya <hoishinxii@gmail.com>",
+	"main": "out/index.js",
+	"husky": {
+		"hooks": {
+			"pre-commit": "lint-staged"
+		}
+	},
+	"devDependencies": {
+		"@hoishin/tslint-config": "^2.0.2",
+		"husky": "^1.2.0",
+		"lint-staged": "^8.1.0",
+		"prettier": "^1.15.2",
+		"react": "^16.7.0-alpha.2",
+		"react-dom": "^16.7.0-alpha.2",
+		"sort-package-json": "^1.16.0",
+		"tslint": "^5.11.0",
+		"typescript": "^3.1.6"
+	},
+	"peerDependencies": {
+		"react": "^16.7.0",
+		"react-dom": "^16.7.0"
+	},
+	"lint-staged": {
+		"*.{ts,tsx}": [
+			"tslint -p . --fix",
+			"git add"
+		],
+		"*.{ts,tsx,js,md,yml}": [
+			"prettier --write",
+			"git add"
+		],
+		"package.json": [
+			"sort-package-json",
+			"git add"
+		]
+	}
+}
