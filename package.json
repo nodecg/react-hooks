@@ -6,7 +6,9 @@
 	"license": "MIT",
 	"author": "Keiichiro Amemiya <hoishinxii@gmail.com>",
 	"files": [
-		"out"
+		"out",
+		"src",
+		"!src/__tests__"
 	],
 	"main": "out/index.js",
 	"types": "out/index.d.ts",
