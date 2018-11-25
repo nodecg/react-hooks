@@ -2,6 +2,13 @@
 	"name": "use-nodecg",
 	"version": "0.3.0",
 	"description": "Custom React Hooks for NodeCG",
+	"keywords": [
+		"custom-hooks",
+		"nodecg",
+		"react",
+		"react-hooks",
+		"typescript"
+	],
 	"repository": "https://github.com/hoishin/use-nodecg",
 	"license": "MIT",
 	"author": "Keiichiro Amemiya <hoishinxii@gmail.com>",
