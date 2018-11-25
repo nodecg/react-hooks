@@ -1,3 +1,13 @@
+## [0.1.1](https://github.com/hoishin/use-nodecg/compare/v0.1.0...v0.1.1) (2018-11-25)
+
+### Features
+
+-   **useReplicant:** return setValue to update replicant ([5719882](https://github.com/hoishin/use-nodecg/commit/5719882))
+
+### BREAKING CHANGES
+
+-   **useReplicant:** The return type is now tuple of value and setValue
+
 # [0.1.0](https://github.com/hoishin/use-nodecg/compare/v0.1.0-0...v0.1.0) (2018-11-24)
 
 # [0.1.0-0](https://github.com/hoishin/use-nodecg/compare/v0.0.1-4...v0.1.0-0) (2018-11-24)
