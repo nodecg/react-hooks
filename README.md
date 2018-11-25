@@ -30,13 +30,18 @@ yarn add use-nodecg@next
 -   Subscribes to specified replicant and returns the value as state.
 -   Allows you to use replicant values in function component.
 
-```ts
+```tsx
 import {useReplicant} from 'use-nodecg';
 
-// This component will re-render when the `currentRun` replicant value changes
+// This component will re-render when the `counter replicant value changes
 export function RunnerName() {
-	const currentRun = useReplicant('currentRun');
-	return <div>{currentRun.runner.name}</div>;
+	const [count, setCount] = useReplicant('counter');
+	return (
+		<div>
+			<div>{count}</div>
+			<button onClick={() => setCount(count + 1)} />
+		</div>
+	);
 }
 ```
 
