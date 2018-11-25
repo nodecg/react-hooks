@@ -20,6 +20,8 @@
 	"main": "out/index.js",
 	"types": "out/index.d.ts",
 	"scripts": {
+		"alpha": "npm version prerelease --preid=alpha",
+		"beta": "npm version prerelease --preid=beta",
 		"prebuild": "del out",
 		"build": "tsc",
 		"prepublishOnly": "yarn && yarn build",
