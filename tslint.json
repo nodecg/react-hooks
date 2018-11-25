@@ -1,6 +1,7 @@
 {
 	"extends": "@hoishin/tslint-config",
 	"rules": {
-		"no-unsafe-any": false
+		"no-unsafe-any": false,
+		"only-arrow-functions": false
 	}
 }

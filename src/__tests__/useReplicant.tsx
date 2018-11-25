@@ -28,7 +28,7 @@ const replicantConstructor = jest.fn(() => replicant);
 };
 
 const RunnerName = () => {
-	const currentRun = useReplicant('currentRun', {runner: {name: 'foo'}});
+	const [currentRun] = useReplicant('currentRun', {runner: {name: 'foo'}});
 	return <div>{currentRun.runner.name}</div>;
 };
 
