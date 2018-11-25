@@ -1,3 +1,5 @@
+## [0.3.1-alpha.0](https://github.com/hoishin/use-nodecg/compare/v0.3.0...v0.3.1-alpha.0) (2018-11-25)
+
 # [0.3.0](https://github.com/hoishin/use-nodecg/compare/v0.2.0...v0.3.0) (2018-11-25)
 
 ### Features
