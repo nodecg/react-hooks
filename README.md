@@ -45,6 +45,57 @@ export function RunnerName() {
 }
 ```
 
+### `useReplicantOnce`
+
+-   Reads specified replicant value once, without subscribing to it.
+-   Uses `readReplicant` internally.
+-   Returns single value that will be updated once when it reads the value
+
+```tsx
+import {useReplicantOnce} from 'use-nodecg';
+
+// Only reads the replicant value once and doesn't update
+export function RunnerName() {
+	const count = useReplicant('counter');
+	return <div>{count}</div>;
+}
+```
+
+### `useListenFor`
+
+-   Subscribes messages with `listenFor`, and unlistens on unmount.
+-   Combining with other hooks enables powerful stateful features with function component
+
+```tsx
+import {useListenFor} from 'use-nodecg';
+
+// Shows modal for 1 second when NodeCG receives 'errorHappened' message from the server
+export function AlertOnMessage() {
+	const [showAlert, setShowAlert] = useState(false);
+	useListenFor('errorHappened', () => {
+		setShowAlert(true);
+	});
+	useEffect(
+		() => {
+			if (!showAlert) {
+				return;
+			}
+			// Disappear alert 1 second after
+			const timer = setTimeout(() => {
+				setShowAlert(false);
+			}, 1000);
+			// Make sure to return cleanup function
+			return () => {
+				clearTimeout(timer);
+			};
+		},
+		[showAlert],
+	);
+
+	return <Modal show={showAlert} />;
+}
+```
+
 ## License
 
 MIT &copy; Keiichiro Amemiya (Hoishin)
