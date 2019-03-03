@@ -23,6 +23,25 @@ npm install use-nodecg@next
 yarn add use-nodecg@next
 ```
 
+## About React Hooks
+
+The React Hooks are a new way of **sharing code** between components, introduced in version 16.8.
+
+**_Please read the documentation of React Hooks thoroughly before using them._**
+
+-   [Video introduction](https://youtu.be/dpw9EHDh2bM)
+-   [The Motivation](https://reactjs.org/docs/hooks-intro.html#motivation)
+-   [Rules](https://reactjs.org/docs/hooks-rules.html)
+-   [Hooks API reference](https://reactjs.org/docs/hooks-reference.html)
+-   [FAQ](https://reactjs.org/docs/hooks-faq.html)
+
+It also helps to learn the background mechanism of React Hooks.
+[React hooks: not magic, just arrays](https://medium.com/@ryardley/react-hooks-not-magic-just-arrays-cd4f1857236e)
+
+## Recommendation
+
+Use [eslint-plugin-react-hooks](https://www.npmjs.com/package/eslint-plugin-react-hooks) in your project. It is 100% smarter than you to detect violation of the Rules of Hooks.
+
 ## Usage
 
 ### `useReplicant`
@@ -50,6 +69,7 @@ export function RunnerName() {
 -   Reads specified replicant value once, without subscribing to it.
 -   Uses `readReplicant` internally.
 -   Returns single value that will be updated once when it reads the value
+-   Does NOT subscribe to replicant value changes
 
 ```tsx
 import {useReplicantOnce} from 'use-nodecg';
@@ -75,22 +95,19 @@ export function AlertOnMessage() {
 	useListenFor('errorHappened', () => {
 		setShowAlert(true);
 	});
-	useEffect(
-		() => {
-			if (!showAlert) {
-				return;
-			}
-			// Disappear alert 1 second after
-			const timer = setTimeout(() => {
-				setShowAlert(false);
-			}, 1000);
-			// Make sure to return cleanup function
-			return () => {
-				clearTimeout(timer);
-			};
-		},
-		[showAlert],
-	);
+	useEffect(() => {
+		if (!showAlert) {
+			return;
+		}
+		// Disappear alert 1 second after
+		const timer = setTimeout(() => {
+			setShowAlert(false);
+		}, 1000);
+		// Make sure to return cleanup function
+		return () => {
+			clearTimeout(timer);
+		};
+	}, [showAlert]);
 
 	return <Modal show={showAlert} />;
 }
