@@ -1,3 +1,17 @@
+# [0.4.0](https://github.com/hoishin/use-nodecg/compare/v0.3.1-alpha.1...v0.4.0) (2019-03-03)
+
+### Bug Fixes
+
+-   **useReplicant:** shallow copy the value if new value isn't identical ([b042aed](https://github.com/hoishin/use-nodecg/commit/b042aed))
+
+### Features
+
+-   **esmodule:** output esmodule along with commonjs ([640153d](https://github.com/hoishin/use-nodecg/commit/640153d))
+
+### BREAKING CHANGES
+
+-   **esmodule:** specifies "module" field in package.json
+
 ## [0.3.1-alpha.1](https://github.com/hoishin/use-nodecg/compare/v0.3.1-alpha.0...v0.3.1-alpha.1) (2018-11-25)
 
 ### Features
