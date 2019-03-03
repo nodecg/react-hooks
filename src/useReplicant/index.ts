@@ -1,4 +1,5 @@
 import {useEffect, useState} from 'react';
+import clone from 'lodash.clone';
 
 /**
  * Subscribe to a replicant, returns tuple of the replicant value and `setValue` function.
@@ -7,12 +8,12 @@ import {useEffect, useState} from 'react';
  * @param repName The name of the replicant to use
  * @param initialValue Initial value to pass to `useState` function
  */
-export function useReplicant<T>(
+export const useReplicant = <T>(
 	repName: string,
 	initialValue: T,
-): [T, (newValue: T) => void] {
+): [T, (newValue: T) => void] => {
 	// Local state to store replicant value
-	const [value, setValue] = useState<T>(initialValue);
+	const [value, updateValue] = useState<T>(initialValue);
 
 	// Declare replicant
 	const replicant = nodecg.Replicant(repName, {
@@ -20,8 +21,13 @@ export function useReplicant<T>(
 	});
 
 	// Change handler to listen replicant changes
-	const changeHandler = (newValue: T) => {
-		setValue(newValue);
+	const changeHandler = (newValue: T): void => {
+		updateValue((oldValue) => {
+			if (newValue !== oldValue) {
+				return newValue;
+			}
+			return clone(newValue);
+		});
 	};
 
 	// Uses no state directly, removes listener on unmount
@@ -33,9 +39,9 @@ export function useReplicant<T>(
 	}, []);
 
 	// Function to set replicant value
-	const setRepValue = (newValue: T) => {
+	const updateRepValue = (newValue: T): void => {
 		replicant.value = newValue;
 	};
 
-	return [value, setRepValue];
-}
+	return [value, updateRepValue];
+};
