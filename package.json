@@ -13,19 +13,20 @@
 	"license": "MIT",
 	"author": "Keiichiro Amemiya <hoishinxii@gmail.com>",
 	"files": [
-		"out",
+		"cjs",
+		"esm",
 		"src",
 		"!src/__tests__"
 	],
-	"main": "out/index.js",
-	"types": "out/index.d.ts",
+	"main": "cjs/index.js",
+	"module": "esm/index.js",
+	"types": "cjs/index.d.ts",
 	"scripts": {
 		"alpha": "npm version prerelease --preid=alpha",
 		"beta": "npm version prerelease --preid=beta",
 		"prebuild": "del out",
-		"build": "tsc",
-		"prepublishOnly": "yarn && yarn build",
-		"pretest": "yarn build",
+		"build": "tsc -p tsconfig.cjs.json && tsc -p tsconfig.esm.json",
+		"prepublishOnly": "yarn build",
 		"test": "jest",
 		"version": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md"
 	},

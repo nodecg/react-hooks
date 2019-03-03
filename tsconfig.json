@@ -2,14 +2,11 @@
 	"extends": "@hoishin/tsconfig",
 	"compilerOptions": {
 		"target": "es2018",
-		"module": "commonjs",
 		"lib": ["es2018", "dom"],
 		"jsx": "react",
 		"declaration": true,
 		"declarationMap": true,
 		"sourceMap": true,
-		"outDir": "out",
-
 		"moduleResolution": "node"
 	},
 	"include": [
