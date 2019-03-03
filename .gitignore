@@ -1,4 +1,5 @@
-out
+/cjs
+/esm
 .vscode
 
 # Logs
