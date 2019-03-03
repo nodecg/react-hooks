@@ -1,4 +1,5 @@
 {
+	"extends": "@hoishin/tsconfig",
 	"compilerOptions": {
 		"target": "es2018",
 		"module": "commonjs",
@@ -9,14 +10,11 @@
 		"sourceMap": true,
 		"outDir": "out",
 
-		"strict": true,
-		"noUnusedLocals": true,
-		"noUnusedParameters": true,
-		"noImplicitReturns": true,
-		"noFallthroughCasesInSwitch": true,
-
 		"moduleResolution": "node"
 	},
-	"include": ["src", "node_modules/nodecg/types/browser.d.ts"],
-	"exclude": ["**/__tests__"]
+	"include": [
+		"src/**/*.ts",
+		"src/**/*.tsx",
+		"node_modules/nodecg/types/browser.d.ts"
+	]
 }

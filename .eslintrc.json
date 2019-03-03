@@ -1,0 +1,6 @@
+{
+	"extends": ["@hoishin/ts", "prettier"],
+	"parserOptions": {
+		"project": "tsconfig.json"
+	}
+}
