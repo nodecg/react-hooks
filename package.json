@@ -32,7 +32,7 @@
 		"lint": "eslint \"**/*.{ts,tsx,js}\"",
 		"lint-fix": "yarn lint --fix",
 		"prepublishOnly": "yarn build",
-		"test": "run-s format-test lint",
+		"test": "run-s format-test lint && jest",
 		"version": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md",
 		"version-alpha": "npm version prerelease --preid=alpha",
 		"version-beta": "npm version prerelease --preid=beta"
