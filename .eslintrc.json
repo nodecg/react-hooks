@@ -1,6 +1,11 @@
 {
 	"extends": ["@hoishin/ts", "prettier"],
+	"plugins": ["react-hooks"],
 	"parserOptions": {
 		"project": "tsconfig.json"
+	},
+	"rules": {
+		"react-hooks/rules-of-hooks": "error",
+		"react-hooks/exhaustive-deps": "warn"
 	}
 }

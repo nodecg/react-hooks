@@ -49,7 +49,7 @@ export const useReplicant = <T>(
 		return () => {
 			replicant.removeListener('change', changeHandler);
 		};
-	}, []);
+	}, [replicant]);
 
 	// Function to set replicant value
 	const updateRepValue = (newValue: T): void => {

@@ -2,14 +2,26 @@
 
 import {EventEmitter} from 'events';
 import React from 'react';
-import {render, RenderResult} from 'react-testing-library';
+import {render, RenderResult, act, fireEvent} from 'react-testing-library';
 import {useReplicant} from '..';
+import {ReplicantOptions} from 'nodecg/types/browser';
 
 const replicantHandler = jest.fn();
 const replicantRemoveListener = jest.fn();
 
 // Intercept mock function
 class Replicant extends EventEmitter {
+	private _value?: any;
+
+	constructor(public name: string, initialValues: ReplicantOptions<any>) {
+		super();
+
+		const {defaultValue} = initialValues;
+		if (typeof defaultValue !== 'undefined') {
+			this.value = defaultValue;
+		}
+	}
+
 	on(event: string, payload: any): this {
 		replicantHandler(event, payload);
 		return super.on(event, payload);
@@ -18,27 +30,58 @@ class Replicant extends EventEmitter {
 		replicantRemoveListener();
 		return super.removeListener(event, listener);
 	}
+	set value(newValue: any) {
+		this._value = newValue;
+		this.emit('change', newValue);
+	}
+	get value(): any {
+		return this._value;
+	}
 }
 
-const replicant = new Replicant();
-const replicantConstructor = jest.fn(() => replicant);
+const allReplicants = new Map<string, Replicant>();
+const replicantConstructor = jest.fn(
+	(name: string, options: ReplicantOptions<any>) => {
+		if (allReplicants.has(name)) {
+			return allReplicants.get(name);
+		}
+		const replicant = new Replicant(name, options);
+		allReplicants.set(name, replicant);
+		return replicant;
+	},
+);
 
 (global as any).nodecg = {
 	Replicant: replicantConstructor,
 };
 
-const RunnerName = (): JSX.Element => {
-	const [currentRun] = useReplicant('currentRun', {runner: {name: 'foo'}});
+interface RunnerNameProps {
+	prefix?: string;
+}
+
+const RunnerName: React.FC<RunnerNameProps> = (props): JSX.Element => {
+	const {prefix} = props;
+	const repName = `${prefix || 'default'}:currentRun`;
+	const [currentRun] = useReplicant(repName, {runner: {name: 'foo'}});
 	return <div>{currentRun.runner.name}</div>;
+};
+
+// Example of a replicant with a mutating value.
+const Counter: React.FC = (): JSX.Element => {
+	const [counter, setCounter] = useReplicant('counter', 0);
+	return <button onClick={() => setCounter(counter + 1)}>{counter}</button>;
 };
 
 let renderResult: RenderResult;
 beforeEach(() => {
-	renderResult = render(<RunnerName />);
+	allReplicants.clear();
+	replicantHandler.mockReset();
+	replicantRemoveListener.mockReset();
 });
 
 test('Initializes replicant correctly', () => {
-	expect(replicantConstructor).toBeCalledWith('currentRun', {
+	renderResult = render(<RunnerName />);
+	expect(replicantConstructor).toBeCalledWith('default:currentRun', {
 		defaultValue: {
 			runner: {name: 'foo'},
 		},
@@ -46,16 +89,60 @@ test('Initializes replicant correctly', () => {
 });
 
 test('Change handler is set correctly', () => {
+	renderResult = render(<RunnerName />);
 	expect(replicantHandler).toBeCalledTimes(1);
 });
 
-test.skip('Handles replicant changes', () => {
-	replicant.emit('change', {runner: {name: 'bar'}});
+test('Change not triggered on rerender', () => {
+	renderResult = render(<RunnerName />);
+	const timesCalled = replicantHandler.mock.calls.length;
+	renderResult.rerender(<RunnerName />);
+	expect(replicantHandler).toBeCalledTimes(timesCalled);
+});
+
+test('Handles replicant name changes', () => {
+	renderResult = render(<RunnerName />);
+	const timesCalled = replicantHandler.mock.calls.length;
+	renderResult.rerender(<RunnerName prefix='test2' />);
+	expect(replicantConstructor).toBeCalledWith('test2:currentRun', {
+		defaultValue: {
+			runner: {name: 'foo'},
+		},
+	});
+	expect(replicantHandler).toBeCalledTimes(timesCalled + 1);
+});
+
+test('Handles replicant changes', () => {
+	renderResult = render(<RunnerName />);
+	expect(allReplicants.size).toEqual(1);
+	const replicant = allReplicants.values().next().value;
+	act(() => {
+		replicant.emit('change', {runner: {name: 'bar'}});
+	});
 	renderResult.rerender(<RunnerName />);
 	expect(renderResult.container.textContent).toBe('bar');
 });
 
+test('Can change replicant value using hook', () => {
+	renderResult = render(<Counter />);
+	expect(allReplicants.has('counter')).toBe(true);
+	expect(renderResult.container.firstChild).toBeTruthy();
+	const replicant = allReplicants.get('counter');
+
+	// We know its not undefined cause we asserted it, but we have a picky linter.
+	if (typeof replicant === 'undefined') return;
+	if (renderResult.container.firstChild === null) return;
+
+	const initialValue = replicant.value as number;
+	expect(replicant.value).toBe(0);
+
+	fireEvent.click(renderResult.container.firstChild as Element);
+	renderResult.rerender(<Counter />);
+	expect(replicant.value).toBe(initialValue + 1);
+});
+
 test('Unlistens when unmounted', () => {
+	renderResult = render(<RunnerName />);
 	renderResult.unmount();
 	expect(replicantRemoveListener).toBeCalledTimes(1);
 });
