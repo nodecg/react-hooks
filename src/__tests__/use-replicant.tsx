@@ -59,16 +59,26 @@ interface RunnerNameProps {
 	prefix?: string;
 }
 
-const RunnerName: React.FC<RunnerNameProps> = (props): JSX.Element => {
+const RunnerName: React.FC<RunnerNameProps> = (props) => {
 	const {prefix} = props;
 	const repName = `${prefix || 'default'}:currentRun`;
-	const [currentRun] = useReplicant(repName, {runner: {name: 'foo'}});
+	const [currentRun] = useReplicant(repName, null, {
+		defaultValue: {runner: {name: 'foo'}},
+	});
+	if (!currentRun) {
+		return null;
+	}
 	return <div>{currentRun.runner.name}</div>;
 };
 
 // Example of a replicant with a mutating value.
-const Counter: React.FC = (): JSX.Element => {
-	const [counter, setCounter] = useReplicant('counter', 0);
+const Counter: React.FC = () => {
+	const [counter, setCounter] = useReplicant('counter', null, {
+		defaultValue: 0,
+	});
+	if (counter === null) {
+		return null;
+	}
 	return <button onClick={() => setCounter(counter + 1)}>{counter}</button>;
 };
 
