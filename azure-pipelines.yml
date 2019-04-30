@@ -1,17 +1,37 @@
+__base_job: &base_job
+    strategy:
+        matrix:
+            node_8:
+                node_version: 8.x
+            node_10:
+                node_version: 10.x
+            node_11:
+                node_version: 11.x
+            node_12:
+                node_version: 12.x
+    steps:
+        - task: NodeTool@0
+          inputs:
+              versionSpec: $(node_version)
+        - script: npm install
+        - script: npm test:fmt
+        - script: npm test:lint
+        - script: npm test:jest
+        - script: npm run build
+
 trigger:
-- master
+    - master
 
-pool:
-  vmImage: 'Ubuntu-16.04'
-
-steps:
-- task: NodeTool@0
-  inputs:
-    versionSpec: '10.x'
-  displayName: 'Install Node.js'
-
-- script: |
-    npm install
-    npm test
-    npm run build
-  displayName: 'npm install and build'
+jobs:
+    - job: linux
+      pool:
+          vmImage: 'Ubuntu-16.04'
+      <<: *base_job
+    - job: macos
+      pool:
+          vmImage: 'macos-10.13'
+      <<: *base_job
+    - job: windows
+      pool:
+          vmImage: 'vs2017-win2016'
+      <<: *base_job
