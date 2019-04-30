@@ -1,12 +1,9 @@
 {
 	"extends": "@hoishin/tsconfig",
 	"compilerOptions": {
-		"target": "es2018",
-		"lib": ["es2018", "dom"],
+		"lib": ["esnext", "dom"],
 		"jsx": "react",
 		"declaration": true,
-		"declarationMap": true,
-		"sourceMap": true,
 		"moduleResolution": "node"
 	},
 	"include": [
