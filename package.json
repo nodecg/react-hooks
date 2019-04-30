@@ -9,33 +9,40 @@
 		"react-hooks",
 		"typescript"
 	],
-	"repository": "https://github.com/hoishin/use-nodecg",
+	"homepage": "https://github.com/Hoishin/use-nodecg",
+	"bugs": {
+		"url": "https://github.com/Hoishin/use-nodecg/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Hoishin/use-nodecg.git"
+	},
 	"license": "MIT",
 	"author": "Keiichiro Amemiya <hoishinxii@gmail.com>",
+	"contributors": [
+		"Carlos Fernandez",
+		"Ted Kulp"
+	],
 	"files": [
 		"cjs",
-		"esm",
-		"src",
-		"!src/__tests__"
+		"esm"
 	],
 	"main": "cjs/index.js",
 	"module": "esm/index.js",
-	"types": "cjs/index.d.ts",
 	"scripts": {
-		"prebuild": "del cjs esm",
-		"build": "run-s build-*",
-		"build-cjs": "tsc -p tsconfig.cjs.json",
-		"build-esm": "tsc -p tsconfig.esm.json",
-		"format": "prettier \"**/*.{js,ts,tsx,md,yml,yaml,json}\"",
-		"format-fix": "yarn format --write",
-		"format-test": "yarn format --list-different",
-		"lint": "eslint \"**/*.{ts,tsx,js}\"",
-		"lint-fix": "yarn lint --fix",
+		"build": "del-cli cjs esm && run-p build:*",
+		"build:cjs": "tsc -p tsconfig.cjs.json",
+		"build:esm": "tsc -p tsconfig.esm.json",
+		"changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
+		"fmt": "yarn prettier --write",
 		"prepublishOnly": "yarn build",
-		"test": "run-s format-test lint && jest",
-		"version": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md",
-		"version-alpha": "npm version prerelease --preid=alpha",
-		"version-beta": "npm version prerelease --preid=beta"
+		"prettier": "prettier \"**/*.{js,ts,tsx,md,yml,yaml,json}\"",
+		"test": "run-s test:*",
+		"test:fmt": "yarn prettier --list-different",
+		"test:jest": "jest",
+		"test:lint": "eslint \"**/*.{ts,tsx,js}\"",
+		"version": "yarn changelog && git add CHANGELOG.md",
+		"version-alpha": "np prerelease --tag alpha"
 	},
 	"husky": {
 		"hooks": {
@@ -78,6 +85,7 @@
 		"jest": "^24.7.1",
 		"lint-staged": "^8.1.5",
 		"nodecg": "^1.4.0",
+		"np": "^5.0.1",
 		"npm-run-all": "^4.1.5",
 		"prettier": "^1.17.0",
 		"react": "^16.8.3",
@@ -93,9 +101,12 @@
 		"tslib": "^1.9.3"
 	},
 	"engines": {
-		"node": "^8.9.0 || ^10.13.0 || ^11.2.0"
+		"node": "8 || 9 || 10 || 11 || 12"
 	},
 	"publishConfig": {
 		"access": "public"
-	}
+	},
+	"maintainers": [
+		"Keiichiro Amemiya <hoishinxii@gmail.com>"
+	]
 }
