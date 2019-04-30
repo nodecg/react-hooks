@@ -1,3 +1,3 @@
-export * from './useReplicant';
-export * from './useReplicantOnce';
-export * from './useListenFor';
+export * from './use-replicant';
+export * from './use-replicant-once';
+export * from './use-listen-for';
