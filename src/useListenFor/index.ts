@@ -20,5 +20,5 @@ export const useListenFor = <T>(
 		return () => {
 			nodecg.unlisten(messageName, handler);
 		};
-	}, []);
+	}, [handler, messageName, options]);
 };
