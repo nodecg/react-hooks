@@ -73,12 +73,9 @@ const RunnerName: React.FC<RunnerNameProps> = (props) => {
 
 // Example of a replicant with a mutating value.
 const Counter: React.FC = () => {
-	const [counter, setCounter] = useReplicant('counter', null, {
+	const [counter, setCounter] = useReplicant('counter', 0, {
 		defaultValue: 0,
 	});
-	if (counter === null) {
-		return null;
-	}
 	return <button onClick={() => setCounter(counter + 1)}>{counter}</button>;
 };
 
