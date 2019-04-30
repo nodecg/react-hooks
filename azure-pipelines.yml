@@ -20,7 +20,12 @@ steps:
       inputs:
           versionSpec: $(node_version)
     - script: npm install
-    - script: npm test:fmt
-    - script: npm test:lint
-    - script: npm test:jest
+      displayName: npm install
+    - script: npm run test:fmt
+      displayName: prettier
+    - script: npm run test:lint
+      displayName: eslint
+    - script: npm run test:jest
+      displayName: jest
     - script: npm run build
+      displayName: build
