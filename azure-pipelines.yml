@@ -27,5 +27,7 @@ steps:
       displayName: eslint
     - script: npm run test:jest
       displayName: jest
+    - script: bash <(curl -s https://codecov.io/bash)
+      displayName: report code coverage
     - script: npm run build
       displayName: build
