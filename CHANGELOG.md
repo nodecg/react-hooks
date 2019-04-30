@@ -1,3 +1,5 @@
+## [0.4.1-1](https://github.com/Hoishin/use-nodecg/compare/v0.4.1-0...v0.4.1-1) (2019-04-30)
+
 ## [0.4.1-0](https://github.com/Hoishin/use-nodecg/compare/v0.4.0...v0.4.1-0) (2019-04-30)
 
 ### Bug Fixes
