@@ -1,11 +1,10 @@
 # use-nodecg
 
-[![Build Status](https://travis-ci.com/Hoishin/use-nodecg.svg?branch=master)](https://travis-ci.com/Hoishin/use-nodecg)
+[![Build Status](https://dev.azure.com/hoishinxii/hoishinxii/_apis/build/status/Hoishin.use-nodecg?branchName=master)](https://dev.azure.com/hoishinxii/hoishinxii/_build/latest?definitionId=1&branchName=master)
 [![codecov](https://codecov.io/gh/Hoishin/use-nodecg/branch/master/graph/badge.svg)](https://codecov.io/gh/Hoishin/use-nodecg)
 [![NpmLicense](https://img.shields.io/npm/l/use-nodecg.svg)](https://github.com/Hoishin/use-nodecg/blob/master/LICENSE)
 [![npm version](https://img.shields.io/npm/v/use-nodecg.svg)](https://www.npmjs.com/package/use-nodecg)
 [![npm version (next)](https://img.shields.io/npm/v/use-nodecg/next.svg)](https://www.npmjs.com/package/use-nodecg)
-[![npm bundle size (minified + gzip)](https://img.shields.io/bundlephobia/minzip/use-nodecg.svg)](https://www.npmjs.com/package/use-nodecg)
 [![npm download total](https://img.shields.io/npm/dt/use-nodecg.svg)](https://www.npmjs.com/package/use-nodecg)
 [![npm type definitions](https://img.shields.io/npm/types/use-nodecg.svg)](https://www.typescriptlang.org/)
 [![node version](https://img.shields.io/node/v/use-nodecg.svg)](https://nodejs.org/en/)
