@@ -12,19 +12,15 @@ strategy:
         node_12:
             node_version: 12.x
 
-jobs:
-    - job: linux
-      pool:
-          vmImage: 'Ubuntu-16.04'
-      steps:
-          - template: azure-templates/test-steps.yml
-    - job: macos
-      pool:
-          vmImage: 'macos-10.13'
-      steps:
-          - template: azure-templates/test-steps.yml
-    - job: windows
-      pool:
-          vmImage: 'vs2017-win2016'
-      steps:
-          - template: azure-templates/test-steps.yml
+pool:
+    vmImage: 'Ubuntu-16.04'
+
+steps:
+    - task: NodeTool@0
+      inputs:
+          versionSpec: $(node_version)
+    - script: npm install
+    - script: npm test:fmt
+    - script: npm test:lint
+    - script: npm test:jest
+    - script: npm run build
