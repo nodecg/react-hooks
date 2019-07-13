@@ -3,8 +3,8 @@
 import {EventEmitter} from 'events';
 import React from 'react';
 import {render, RenderResult, act, fireEvent} from 'react-testing-library';
-import {useReplicant} from '..';
 import {ReplicantOptions} from 'nodecg/types/browser';
+import {useReplicant} from '..';
 
 const replicantHandler = jest.fn();
 const replicantRemoveListener = jest.fn();
