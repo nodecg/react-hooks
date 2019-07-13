@@ -71,7 +71,7 @@
 	"devDependencies": {
 		"@hoishin/eslint-config-ts": "0.0.5",
 		"@hoishin/prettierrc": "2.1.1",
-		"@hoishin/tsconfig": "1.0.0",
+		"@hoishin/tsconfig": "2.0.0",
 		"@types/jest": "24.0.15",
 		"@types/lodash.clone": "4.5.6",
 		"@types/node": "11.13.17",
