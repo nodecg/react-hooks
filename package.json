@@ -102,9 +102,6 @@
 		"react": "^16.8.0",
 		"tslib": "^1.9.3"
 	},
-	"engines": {
-		"node": "8 || 9 || 10 || 11 || 12"
-	},
 	"publishConfig": {
 		"access": "public"
 	},
