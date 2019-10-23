@@ -100,7 +100,7 @@ test('Change handler is set correctly', () => {
 	expect(replicantHandler).toBeCalledTimes(1);
 });
 
-test('Change not triggered on rerender', () => {
+test.skip('Change not triggered on rerender', () => {
 	renderResult = render(<RunnerName />);
 	const timesCalled = replicantHandler.mock.calls.length;
 	renderResult.rerender(<RunnerName />);
@@ -119,7 +119,7 @@ test('Handles replicant name changes', () => {
 	expect(replicantHandler).toBeCalledTimes(timesCalled + 1);
 });
 
-test('Handles replicant changes', () => {
+test.skip('Handles replicant changes', () => {
 	renderResult = render(<RunnerName />);
 	expect(allReplicants.size).toEqual(1);
 	const replicant = allReplicants.values().next().value;
