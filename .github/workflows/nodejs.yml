@@ -16,13 +16,13 @@ jobs:
               uses: actions/setup-node@v1
               with:
                   node-version: ${{ matrix.node-version }}
-            - name: npm install
-              run: npm install
+            - name: Install
+              run: yarn install --frozen-lockfile
             - name: prettier
-              run: npm run test:fmt
+              run: yarn test:fmt
             - name: eslint
-              run: npm run test:lint
+              run: yarn test:lint
             - name: jest
-              run: npm run test:jest
+              run: yarn test:jest
             - name: build
-              run: npm run build
+              run: yarn build
