@@ -1,9 +1,11 @@
 /* eslint-disable prefer-arrow/prefer-arrow-functions */
 
 import {EventEmitter} from 'events';
+
 import React from 'react';
 import {render, RenderResult, act, fireEvent} from 'react-testing-library';
 import {ReplicantOptions} from 'nodecg/types/browser';
+
 import {useReplicant} from '..';
 
 const replicantHandler = jest.fn();
@@ -26,14 +28,17 @@ class Replicant extends EventEmitter {
 		replicantHandler(event, payload);
 		return super.on(event, payload);
 	}
+
 	removeListener(event: string, listener: () => void): this {
 		replicantRemoveListener();
 		return super.removeListener(event, listener);
 	}
+
 	set value(newValue: any) {
 		this._value = newValue;
 		this.emit('change', newValue);
 	}
+
 	get value(): any {
 		return this._value;
 	}

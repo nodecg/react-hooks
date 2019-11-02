@@ -30,20 +30,17 @@
 	"main": "cjs/index.js",
 	"module": "esm/index.js",
 	"scripts": {
+		"_prettier": "prettier \"**/*.{js,ts,tsx,md,yml,yaml,json}\"",
 		"build": "del-cli cjs esm && run-p build:*",
 		"build:cjs": "tsc -p tsconfig.cjs.json",
 		"build:esm": "tsc -p tsconfig.esm.json",
-		"changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
-		"fmt": "yarn prettier --write",
+		"fmt": "yarn _prettier --write",
 		"prepublishOnly": "yarn build",
-		"prettier": "prettier \"**/*.{js,ts,tsx,md,yml,yaml,json}\"",
-		"publish-latest": "np",
-		"publish-next": "np prerelease --tag next",
+		"release": "standard-version",
 		"test": "run-s test:*",
-		"test:fmt": "yarn prettier --list-different",
+		"test:fmt": "yarn _prettier --check",
 		"test:jest": "jest",
-		"test:lint": "eslint \"**/*.{ts,tsx,js}\"",
-		"version": "yarn changelog && git add CHANGELOG.md"
+		"test:lint": "eslint \"**/*.{ts,tsx}\""
 	},
 	"husky": {
 		"hooks": {
@@ -55,7 +52,7 @@
 			"prettier --write",
 			"git add"
 		],
-		"*.{js,ts,tsx}": [
+		"*.{ts,tsx}": [
 			"eslint --fix",
 			"git add"
 		],
@@ -66,46 +63,32 @@
 	},
 	"prettier": "@hoishin/prettierrc",
 	"dependencies": {
-		"lodash.clone": "^4.5.0"
+		"lodash.clone": "^4.5.0",
+		"tslib": "^1.10.0"
 	},
 	"devDependencies": {
-		"@hoishin/eslint-config-ts": "0.0.5",
-		"@hoishin/prettierrc": "2.1.1",
-		"@hoishin/tsconfig": "2.0.0",
-		"@types/jest": "24.0.21",
-		"@types/lodash.clone": "4.5.6",
-		"@types/node": "11.15.2",
-		"@types/react": "16.9.11",
-		"@types/react-dom": "16.9.3",
-		"@typescript-eslint/parser": "1.13.0",
-		"conventional-changelog-cli": "2.0.25",
-		"del-cli": "3.0.0",
-		"eslint": "6.6.0",
-		"eslint-config-prettier": "6.5.0",
-		"eslint-plugin-react-hooks": "2.2.0",
-		"husky": "3.0.9",
-		"jest": "24.9.0",
-		"lint-staged": "9.4.2",
-		"nodecg": "1.5.0",
-		"np": "5.1.2",
-		"npm-run-all": "4.1.5",
-		"prettier": "1.18.2",
-		"react": "16.11.0",
-		"react-dom": "16.11.0",
-		"react-testing-library": "7.0.1",
-		"sort-package-json": "1.22.1",
-		"ts-jest": "24.1.0",
-		"tslib": "1.10.0",
-		"typescript": "3.6.4"
-	},
-	"peerDependencies": {
-		"react": "^16.8.0",
-		"tslib": "^1.9.3"
-	},
-	"publishConfig": {
-		"access": "public"
-	},
-	"maintainers": [
-		"Keiichiro Amemiya <hoishinxii@gmail.com>"
-	]
+		"@hoishin/prettierrc": "^2.1.1",
+		"@hoishin/tsconfig": "^2.0.0",
+		"@types/jest": "^24.0.21",
+		"@types/lodash.clone": "^4.5.6",
+		"@types/node": "^11.15.2",
+		"@types/react": "^16.9.11",
+		"@types/react-dom": "^16.9.3",
+		"del-cli": "^3.0.0",
+		"eslint": "^6.6.0",
+		"eslint-config-hoishin": "^0.2.5",
+		"husky": "^3.0.9",
+		"jest": "^24.9.0",
+		"lint-staged": "^9.4.2",
+		"nodecg": "^1.5.0",
+		"npm-run-all": "^4.1.5",
+		"prettier": "^1.18.2",
+		"react": "^16.11.0",
+		"react-dom": "^16.11.0",
+		"react-testing-library": "^7.0.1",
+		"sort-package-json": "^1.22.1",
+		"standard-version": "^7.0.0",
+		"ts-jest": "^24.1.0",
+		"typescript": "^3.6.4"
+	}
 }

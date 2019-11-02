@@ -1,11 +1,14 @@
 {
-	"extends": ["@hoishin/ts", "prettier"],
-	"plugins": ["react-hooks"],
-	"parserOptions": {
-		"project": "tsconfig.json"
-	},
+	"extends": ["hoishin/typescript"],
 	"rules": {
-		"react-hooks/rules-of-hooks": "error",
-		"react-hooks/exhaustive-deps": "warn"
+		"@typescript-eslint/generic-type-naming": 0,
+		"@typescript-eslint/strict-boolean-expressions": 0,
+		"@typescript-eslint/no-unnecessary-condition": 0,
+		"@typescript-eslint/no-magic-numbers": 0,
+		"@typescript-eslint/no-unused-vars": 0,
+		"@typescript-eslint/no-explicit-any": 0,
+		"new-cap": [2, {"capIsNewExceptions": ["nodecg.Replicant"]}],
+		"max-statements": 0,
+		"no-underscore-dangle": 0
 	}
 }
