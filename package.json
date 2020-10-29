@@ -85,7 +85,7 @@
 		"prettier": "^2.0.0",
 		"react": "^16.11.0",
 		"react-dom": "^16.11.0",
-		"react-testing-library": "^7.0.1",
+		"react-testing-library": "^8.0.0",
 		"sort-package-json": "^1.22.1",
 		"standard-version": "^7.0.0",
 		"ts-jest": "^26.0.0",
