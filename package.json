@@ -87,7 +87,7 @@
 		"react-dom": "16.13.0",
 		"react-testing-library": "7.0.1",
 		"sort-package-json": "1.40.0",
-		"standard-version": "^7.0.0",
+		"standard-version": "^8.0.0",
 		"ts-jest": "26.0.0",
 		"typescript": "3.8.3"
 	}
