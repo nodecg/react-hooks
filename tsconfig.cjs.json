@@ -3,8 +3,7 @@
 	"compilerOptions": {
 		"target": "es3",
 		"module": "commonjs",
-		"outDir": "cjs",
-		"skipLibCheck": true
+		"outDir": "cjs"
 	},
 	"include": [
 		"src/**/*.ts",
