@@ -3,7 +3,8 @@
 	"compilerOptions": {
 		"target": "es2015",
 		"module": "es2015",
-		"outDir": "esm"
+		"outDir": "esm",
+		"skipLibCheck": true
 	},
 	"include": [
 		"src/**/*.ts",
