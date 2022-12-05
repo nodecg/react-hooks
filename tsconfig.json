@@ -1,6 +1,7 @@
 {
 	"extends": "@hoishin/tsconfig",
 	"compilerOptions": {
+		"target": "ESNext",
 		"lib": ["esnext", "dom"],
 		"jsx": "react",
 		"declaration": true,

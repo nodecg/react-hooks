@@ -1,9 +1,11 @@
-/* eslint-disable prefer-arrow/prefer-arrow-functions */
+/**
+ * @jest-environment jsdom
+ */
 
 import {EventEmitter} from 'events';
 
 import React from 'react';
-import {render, RenderResult, act, fireEvent} from 'react-testing-library';
+import {render, RenderResult, act, fireEvent} from '@testing-library/react';
 import {ReplicantOptions} from 'nodecg/types/browser';
 
 import {useReplicant} from '..';
@@ -15,7 +17,10 @@ const replicantRemoveListener = jest.fn();
 class Replicant extends EventEmitter {
 	private _value?: any;
 
-	constructor(public name: string, initialValues: ReplicantOptions<any>) {
+	constructor(
+		public name: string,
+		initialValues: ReplicantOptions<{defaultValue?: unknown}>,
+	) {
 		super();
 
 		const {defaultValue} = initialValues;
@@ -66,7 +71,7 @@ interface RunnerNameProps {
 
 const RunnerName: React.FC<RunnerNameProps> = (props) => {
 	const {prefix} = props;
-	const repName = `${prefix || 'default'}:currentRun`;
+	const repName = `${prefix ?? 'default'}:currentRun`;
 	const [currentRun] = useReplicant(repName, null, {
 		defaultValue: {runner: {name: 'foo'}},
 	});
@@ -127,7 +132,7 @@ test('Handles replicant name changes', () => {
 test.skip('Handles replicant changes', () => {
 	renderResult = render(<RunnerName />);
 	expect(allReplicants.size).toEqual(1);
-	const replicant = allReplicants.values().next().value;
+	const replicant = allReplicants.values().next().value as EventEmitter;
 	act(() => {
 		replicant.emit('change', {runner: {name: 'bar'}});
 	});

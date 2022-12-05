@@ -10,7 +10,7 @@ export const useListenFor = <T>(
 	options?: UseListenForOptions,
 ): void => {
 	useEffect(() => {
-		if (options && options.bundle) {
+		if (options?.bundle) {
 			nodecg.listenFor(messageName, options.bundle, handler);
 			return () => {
 				nodecg.unlisten(messageName, options.bundle, handler);
