@@ -10,7 +10,7 @@ export const useReplicantOnce = <T>(
 	options?: UseReplicantOnceOptions,
 ): T => {
 	const [state, setState] = useState(initialValue);
-	if (options && options.bundle) {
+	if (options?.bundle) {
 		nodecg.readReplicant<T>(replicantName, options.bundle, (value) => {
 			setState(value);
 		});

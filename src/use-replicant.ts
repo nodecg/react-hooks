@@ -10,26 +10,21 @@ import {ReplicantOptions} from 'nodecg/types/server';
  * @param initialValue Initial value to pass to `useState` function
  * @param options Options object.  Currently supports the optional `namespace` option
  */
-export const useReplicant = <T, U>(
+export const useReplicant = <T>(
 	replicantName: string,
-	initialValue: U,
+	initialValue: T,
 	options?: ReplicantOptions<T> & {namespace?: string},
-): [T | U, (newValue: T) => void] => {
-	const [value, updateValue] = useState<T | U>(initialValue);
+): [T, (newValue: T) => void] => {
+	const [value, updateValue] = useState<T>(initialValue);
 
 	const replicantOptions = options && {
 		defaultValue: options.defaultValue,
 		persistent: options.persistent,
 		schemaPath: options.schemaPath,
 	};
-	const replicant =
-		options && options.namespace
-			? nodecg.Replicant(
-					replicantName,
-					options.namespace,
-					replicantOptions,
-			  )
-			: nodecg.Replicant(replicantName, replicantOptions);
+	const replicant = options?.namespace
+		? nodecg.Replicant(replicantName, options.namespace, replicantOptions)
+		: nodecg.Replicant(replicantName, replicantOptions);
 
 	const changeHandler = (newValue: T): void => {
 		updateValue((oldValue) => {
