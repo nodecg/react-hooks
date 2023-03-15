@@ -1,3 +1,15 @@
+# Changelog
+
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+### [0.4.1-2](https://github.com/Hoishin/use-nodecg/compare/v0.4.1-1...v0.4.1-2) (2023-03-15)
+
+### Bug Fixes
+
+-   **deps:** update dependency tslib to v1.11.1 ([#160](https://github.com/Hoishin/use-nodecg/issues/160)) ([11fb8b6](https://github.com/Hoishin/use-nodecg/commit/11fb8b6b67b0accefba57c0a2bae55c0dec096cd))
+-   **deps:** update dependency tslib to v2 ([#219](https://github.com/Hoishin/use-nodecg/issues/219)) ([3fbcf13](https://github.com/Hoishin/use-nodecg/commit/3fbcf1374eeaed594a3815297a7d1dee02ffc72e))
+-   **deps:** update to react 18 and typescript 4.5 ([#245](https://github.com/Hoishin/use-nodecg/issues/245)) ([4467b7e](https://github.com/Hoishin/use-nodecg/commit/4467b7e310c7890ce4b5dae4f85e08ad2960f970))
+
 ## [0.4.1-1](https://github.com/Hoishin/use-nodecg/compare/v0.4.0...v0.4.1-1) (2019-04-30)
 
 ### Bug Fixes
