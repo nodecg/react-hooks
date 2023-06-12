@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react';
-import {klona as clone} from 'klona';
+import {klona as clone} from 'klona/json';
 import type NodeCG from '@nodecg/types';
 
 /**
