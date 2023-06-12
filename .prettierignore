@@ -3,6 +3,7 @@
 .vscode
 package-lock.json
 yarn.lock
+CHANGELOG.md
 
 # Logs
 logs
