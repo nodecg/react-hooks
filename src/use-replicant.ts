@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
-import clone from 'lodash.clone';
-import {ReplicantOptions} from 'nodecg/types/server';
+import {klona as clone} from 'klona/json';
+import type NodeCG from '@nodecg/types';
 
 /**
  * Subscribe to a replicant, returns tuple of the replicant value and `setValue` function.
@@ -8,25 +8,38 @@ import {ReplicantOptions} from 'nodecg/types/server';
  * The `setValue` function can be used to update replicant value.
  * @param replicantName The name of the replicant to use
  * @param initialValue Initial value to pass to `useState` function
- * @param options Options object.  Currently supports the optional `namespace` option
+ * @param options Options object. Currently supports the optional `namespace` option
  */
 export const useReplicant = <T>(
 	replicantName: string,
 	initialValue: T,
-	options?: ReplicantOptions<T> & {namespace?: string},
-): [T, (newValue: T) => void] => {
-	const [value, updateValue] = useState<T>(initialValue);
+	options?: NodeCG.Replicant.Options<T> & {namespace?: string},
+): [T | undefined, (newValue: T) => void] => {
+	const [value, updateValue] = useState<T | undefined>(initialValue);
 
-	const replicantOptions = options && {
-		defaultValue: options.defaultValue,
+	const replicantOptions: typeof options = options && {
 		persistent: options.persistent,
 		schemaPath: options.schemaPath,
 	};
-	const replicant = options?.namespace
-		? nodecg.Replicant(replicantName, options.namespace, replicantOptions)
-		: nodecg.Replicant(replicantName, replicantOptions);
 
-	const changeHandler = (newValue: T): void => {
+	if (options && 'defaultValue' in options) {
+		(replicantOptions as NodeCG.Replicant.OptionsWithDefault<
+			T
+		>).defaultValue = options.defaultValue;
+	}
+
+	let replicant: NodeCG.ClientReplicant<T>;
+	if (options?.namespace) {
+		replicant = nodecg.Replicant(
+			replicantName,
+			options.namespace,
+			replicantOptions,
+		);
+	} else {
+		replicant = nodecg.Replicant(replicantName, replicantOptions);
+	}
+
+	const changeHandler = (newValue: T | undefined): void => {
 		updateValue((oldValue) => {
 			if (newValue !== oldValue) {
 				return newValue;
