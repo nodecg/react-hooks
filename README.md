@@ -1,28 +1,22 @@
 # use-nodecg
 
-[![Build Status](https://dev.azure.com/hoishinxii/hoishinxii/_apis/build/status/Hoishin.use-nodecg?branchName=master)](https://dev.azure.com/hoishinxii/hoishinxii/_build/latest?definitionId=1&branchName=master)
-[![codecov](https://codecov.io/gh/Hoishin/use-nodecg/branch/master/graph/badge.svg)](https://codecov.io/gh/Hoishin/use-nodecg)
-[![NpmLicense](https://img.shields.io/npm/l/use-nodecg.svg)](https://github.com/Hoishin/use-nodecg/blob/master/LICENSE)
-[![npm version](https://img.shields.io/npm/v/use-nodecg.svg)](https://www.npmjs.com/package/use-nodecg)
-[![npm version (next)](https://img.shields.io/npm/v/use-nodecg/next.svg)](https://www.npmjs.com/package/use-nodecg)
-[![npm download total](https://img.shields.io/npm/dt/use-nodecg.svg)](https://www.npmjs.com/package/use-nodecg)
-[![npm type definitions](https://img.shields.io/npm/types/use-nodecg.svg)](https://www.typescriptlang.org/)
-[![node version](https://img.shields.io/node/v/use-nodecg.svg)](https://nodejs.org/en/)
-[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
-
 This package is a collection custom hooks of [React Hooks](https://reactjs.org/docs/hooks-intro.html) for NodeCG API.
 
-🚨 This package is in alpha state, as well as the React Hooks API itself. Do not use in production. But feel free to try out and file an issue for suggestion/bugs!
+🚨 This package is in alpha state. But feel free to try out and file an issue for suggestion/bugs!
 
 ## Install
 
 ```sh
-npm install use-nodecg@next
+npm install use-nodecg
 # or
-yarn add use-nodecg@next
+yarn add use-nodecg
+# or
+pnpm add use-nodecg
 ```
 
 ## About React Hooks
+
+(This section comes from when React hooks was just introduced as an alpha feature, but is still useful to keep as an introduction.)
 
 The React Hooks are a new way of **sharing code** between components, introduced in version 16.8.
 
@@ -75,7 +69,7 @@ import {useReplicantOnce} from 'use-nodecg';
 
 // Only reads the replicant value once and doesn't update
 export function RunnerName() {
-	const count = useReplicant('counter');
+	const count = useReplicantOnce('counter');
 	return <div>{count}</div>;
 }
 ```
