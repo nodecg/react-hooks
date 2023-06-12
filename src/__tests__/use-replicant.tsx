@@ -145,7 +145,7 @@ test.skip('Handles replicant changes', () => {
 	renderResult = render(<RunnerName />);
 	expect(allReplicants.size).toEqual(1);
 	const replicant = allReplicants.values().next().value as EventEmitter;
-	act(() => {
+	void act(() => {
 		replicant.emit('change', {runner: {name: 'bar'}});
 	});
 	renderResult.rerender(<RunnerName />);

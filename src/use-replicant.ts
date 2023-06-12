@@ -39,17 +39,16 @@ export const useReplicant = <T>(
 		replicant = nodecg.Replicant(replicantName, replicantOptions);
 	}
 
-	const changeHandler = (newValue: T | undefined): void => {
-		updateValue((oldValue) => {
-			if (newValue !== oldValue) {
-				return newValue;
-			}
-			// replicant.value has always the same reference. Cloning to cause re-rendering
-			return clone(newValue);
-		});
-	};
-
 	useEffect(() => {
+		const changeHandler = (newValue: T | undefined): void => {
+			updateValue((oldValue) => {
+				if (newValue !== oldValue) {
+					return newValue;
+				}
+				// replicant.value has always the same reference. Cloning to cause re-rendering
+				return clone(newValue);
+			});
+		};
 		replicant.on('change', changeHandler);
 		return () => {
 			replicant.removeListener('change', changeHandler);
