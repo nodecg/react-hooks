@@ -1,0 +1,10 @@
+{
+	"extends": "../tsconfig.json",
+	"compilerOptions": {
+		"module": "ES2022",
+		"moduleResolution": "bundler",
+		"types": ["@nodecg/types/augment-window.d.ts"],
+		"outDir": "../esm"
+	},
+	"include": ["./**/*.ts", "./**/*.tsx"]
+}

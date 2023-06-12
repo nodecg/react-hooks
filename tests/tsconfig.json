@@ -1,0 +1,7 @@
+{
+	"extends": "../tsconfig.json",
+	"compilerOptions": {
+		"jsx": "react-jsx",
+		"types": ["ts-jest/globals", "@nodecg/types/augment-window.d.ts"]
+	}
+}
