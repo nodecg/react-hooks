@@ -8,7 +8,7 @@ import React from 'react';
 import {render, act, fireEvent} from '@testing-library/react';
 import type {RenderResult} from '@testing-library/react';
 
-import {useReplicant} from '..';
+import {useReplicant} from '../src';
 import type NodeCG from '@nodecg/types';
 
 const replicantHandler = jest.fn();
@@ -32,12 +32,12 @@ class Replicant extends EventEmitter {
 		}
 	}
 
-	on(event: string, payload: any): this {
+	override on(event: string, payload: any): this {
 		replicantHandler(event, payload);
 		return super.on(event, payload);
 	}
 
-	removeListener(event: string, listener: () => void): this {
+	override removeListener(event: string, listener: () => void): this {
 		replicantRemoveListener();
 		return super.removeListener(event, listener);
 	}

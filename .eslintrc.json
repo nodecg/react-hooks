@@ -13,7 +13,16 @@
 	],
 	"overrides": [
 		{
-			"files": ["**/__tests__/**/*"],
+			"files": ["./src/**/*"],
+			"parserOptions": {
+				"project": "./src/tsconfig.json"
+			}
+		},
+		{
+			"files": ["./tests/**/*"],
+			"parserOptions": {
+				"project": "./tests/tsconfig.json"
+			},
 			"rules": {
 				"@typescript-eslint/no-explicit-any": "off",
 				"@typescript-eslint/no-unsafe-argument": "off",

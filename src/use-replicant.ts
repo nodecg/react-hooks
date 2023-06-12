@@ -17,15 +17,17 @@ export const useReplicant = <T>(
 ): [T | undefined, (newValue: T) => void] => {
 	const [value, updateValue] = useState<T | undefined>(initialValue);
 
-	const replicantOptions: typeof options = options && {
-		persistent: options.persistent,
-		schemaPath: options.schemaPath,
-	};
+	const replicantOptions =
+		options &&
+		({
+			persistent: options.persistent,
+			schemaPath: options.schemaPath,
+		} satisfies typeof options);
 
 	if (options && 'defaultValue' in options) {
-		(replicantOptions as NodeCG.Replicant.OptionsWithDefault<
-			T
-		>).defaultValue = options.defaultValue;
+		(
+			replicantOptions as NodeCG.Replicant.OptionsWithDefault<T>
+		).defaultValue = options.defaultValue;
 	}
 
 	let replicant: NodeCG.ClientReplicant<T>;

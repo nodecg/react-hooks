@@ -1,16 +1,27 @@
 {
-	"extends": "@hoishin/tsconfig",
 	"compilerOptions": {
-		"target": "ESNext",
-		"lib": ["esnext", "dom"],
-		"jsx": "react",
+		"target": "ES2022",
+		"lib": ["ES2022", "DOM"],
+		"module": "Node16",
+		"moduleResolution": "node16",
+
 		"declaration": true,
-		"moduleResolution": "node",
+		"sourceMap": true,
+		"isolatedModules": true,
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"useDefineForClassFields": true,
+
+		"strict": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"exactOptionalPropertyTypes": false,
+		"noImplicitReturns": true,
+		"noFallthroughCasesInSwitch": true,
+		"noUncheckedIndexedAccess": true,
+		"noImplicitOverride": true,
+		"noPropertyAccessFromIndexSignature": true,
+
 		"skipLibCheck": true
-	},
-	"include": [
-		"src/**/*.ts",
-		"src/**/*.tsx",
-		"node_modules/@nodecg/types/augment-window.d.ts"
-	]
+	}
 }
