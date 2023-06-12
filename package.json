@@ -23,6 +23,28 @@
 		"Carlos Fernandez",
 		"Ted Kulp"
 	],
+	"exports": {
+		".": {
+			"import": "./esm/index.js",
+			"require": "./cjs/index.js",
+			"default": "./esm/index.js"
+		},
+		"./use-replicant": {
+			"import": "./esm/use-replicant.js",
+			"require": "./cjs/use-replicant.js",
+			"default": "./esm/use-replicant.js"
+		},
+		"./use-listen-for": {
+			"import": "./esm/use-listen-for.js",
+			"require": "./cjs/use-listen-for.js",
+			"default": "./esm/use-listen-for.js"
+		},
+		"./use-replicant-once": {
+			"import": "./esm/use-replicant-once.js",
+			"require": "./cjs/use-replicant-once.js",
+			"default": "./esm/use-replicant-once.js"
+		}
+	},
 	"main": "cjs/index.js",
 	"module": "esm/index.js",
 	"files": [
