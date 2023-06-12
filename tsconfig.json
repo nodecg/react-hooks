@@ -11,6 +11,6 @@
 	"include": [
 		"src/**/*.ts",
 		"src/**/*.tsx",
-		"node_modules/nodecg/types/browser.d.ts"
+		"node_modules/@nodecg/types/augment-window.d.ts"
 	]
 }

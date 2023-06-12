@@ -5,10 +5,11 @@
 import {EventEmitter} from 'events';
 
 import React from 'react';
-import {render, RenderResult, act, fireEvent} from '@testing-library/react';
-import {ReplicantOptions} from 'nodecg/types/browser';
+import {render, act, fireEvent} from '@testing-library/react';
+import type {RenderResult} from '@testing-library/react';
 
 import {useReplicant} from '..';
+import type NodeCG from '@nodecg/types';
 
 const replicantHandler = jest.fn();
 const replicantRemoveListener = jest.fn();
@@ -19,7 +20,9 @@ class Replicant extends EventEmitter {
 
 	constructor(
 		public name: string,
-		initialValues: ReplicantOptions<{defaultValue?: unknown}>,
+		initialValues: NodeCG.Replicant.OptionsWithDefault<{
+			defaultValue?: unknown;
+		}>,
 	) {
 		super();
 
@@ -51,7 +54,7 @@ class Replicant extends EventEmitter {
 
 const allReplicants = new Map<string, Replicant>();
 const replicantConstructor = jest.fn(
-	(name: string, options: ReplicantOptions<any>) => {
+	(name: string, options: NodeCG.Replicant.OptionsWithDefault<any>) => {
 		if (allReplicants.has(name)) {
 			return allReplicants.get(name);
 		}
@@ -86,7 +89,16 @@ const Counter: React.FC = () => {
 	const [counter, setCounter] = useReplicant('counter', 0, {
 		defaultValue: 0,
 	});
-	return <button onClick={() => setCounter(counter + 1)}>{counter}</button>;
+	if (typeof counter !== 'number') return null;
+	return (
+		<button
+			onClick={() => {
+				setCounter(counter + 1);
+			}}
+		>
+			{counter}
+		</button>
+	);
 };
 
 let renderResult: RenderResult;
