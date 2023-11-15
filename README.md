@@ -47,10 +47,11 @@ import {useReplicant} from 'use-nodecg';
 
 // This component will re-render when the `counter replicant value changes
 export function RunnerName() {
-	const [count, setCount] = useReplicant('counter');
+  const initialValue = 5;
+	const [count, setCount] = useReplicant('counter',initialValue);
 	return (
 		<div>
-			<div>{count}</div>
+			<div>{count}</div> //returns 5
 			<button onClick={() => setCount(count + 1)} />
 		</div>
 	);
@@ -69,7 +70,8 @@ import {useReplicantOnce} from 'use-nodecg';
 
 // Only reads the replicant value once and doesn't update
 export function RunnerName() {
-	const count = useReplicantOnce('counter');
+  const initialValue = 5
+	const count = useReplicantOnce('counter',initialValue);
 	return <div>{count}</div>;
 }
 ```
