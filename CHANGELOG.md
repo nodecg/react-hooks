@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0-2](https://github.com/nodecg/react-hooks/compare/v0.4.1-2...v1.0.0-2) (2024-01-01)
+
+
+### ⚠ BREAKING CHANGES
+
+* useReplicantOnce is removed because it is not so complicated to provide as a custom hook, and there is not much use for it.
+* **package:** It is now disallowed to import `use-nodecg/esm` or `use-nodecg/cjs`
+
+### Features
+
+* allow function as setReplicant value ([#268](https://github.com/nodecg/react-hooks/issues/268)) ([22fa294](https://github.com/nodecg/react-hooks/commit/22fa2945bfff4e5185e4f4985f6182c6560cd386))
+* **package:** add "exports" to package.json ([#261](https://github.com/nodecg/react-hooks/issues/261)) ([982680a](https://github.com/nodecg/react-hooks/commit/982680ab739953cefaa84d4266188ed2128941f2))
+* remove useReplicantOnce ([#266](https://github.com/nodecg/react-hooks/issues/266)) ([be12d07](https://github.com/nodecg/react-hooks/commit/be12d07e281670880ec0227fd99667ce52e36d77))
+* upgrade to nodecg v2 ([#248](https://github.com/nodecg/react-hooks/issues/248)) ([1af2348](https://github.com/nodecg/react-hooks/commit/1af234840f2662b0ce92a28b76a97faeb1ce281f))
+
 ### [0.4.1-2](https://github.com/Hoishin/use-nodecg/compare/v0.4.1-1...v0.4.1-2) (2023-03-15)
 
 ### Bug Fixes
