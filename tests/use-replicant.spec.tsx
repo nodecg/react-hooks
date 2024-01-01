@@ -75,7 +75,7 @@ interface RunnerNameProps {
 const RunnerName: React.FC<RunnerNameProps> = (props) => {
 	const {prefix} = props;
 	const repName = `${prefix ?? 'default'}:currentRun`;
-	const [currentRun] = useReplicant(repName, null, {
+	const [currentRun] = useReplicant(repName, {
 		defaultValue: {runner: {name: 'foo'}},
 	});
 	if (!currentRun) {
@@ -86,7 +86,7 @@ const RunnerName: React.FC<RunnerNameProps> = (props) => {
 
 // Example of a replicant with a mutating value.
 const Counter: React.FC = () => {
-	const [counter, setCounter] = useReplicant('counter', 0, {
+	const [counter, setCounter] = useReplicant<number>('counter', {
 		defaultValue: 0,
 	});
 	if (typeof counter !== 'number') return null;
