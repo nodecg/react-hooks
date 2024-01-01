@@ -49,10 +49,10 @@
 	"scripts": {
 		"_prettier": "prettier \"**/*.{js,ts,tsx,md,yml,yaml,json}\"",
 		"build": "del-cli cjs esm && tsc -b src/tsconfig.json src/tsconfig.cjs.json",
-		"fmt": "yarn _prettier --write",
-		"prepublishOnly": "yarn build",
+		"fmt": "npm run _prettier -- --write",
+		"prepublishOnly": "npm run build",
 		"test": "run-s test:*",
-		"test:fmt": "yarn _prettier --check",
+		"test:fmt": "npm run _prettier -- --check",
 		"test:jest": "jest",
 		"test:lint": "eslint \"**/*.{ts,tsx}\""
 	},
