@@ -20,7 +20,7 @@ jobs:
               id: release-please
               with:
                   release-type: node
-                  package-name: use-nodecg
+                  package-name: '@nodecg/react-hooks'
 
     publish:
         needs: release-please
@@ -31,7 +31,7 @@ jobs:
             - uses: actions/setup-node@v3
               with:
                   node-version: lts
-            - run: yarn install --frozen-lockfile
+            - run: npm ci
             - run: npm publish
               env:
                   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

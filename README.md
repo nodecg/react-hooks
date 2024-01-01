@@ -1,4 +1,4 @@
-# use-nodecg
+# @nodecg/react-hooks
 
 This package is a collection custom hooks of [React Hooks](https://reactjs.org/docs/hooks-intro.html) for NodeCG API.
 
@@ -7,11 +7,11 @@ This package is a collection custom hooks of [React Hooks](https://reactjs.org/d
 ## Install
 
 ```sh
-npm install use-nodecg
+npm install @nodecg/react-hooks
 # or
-yarn add use-nodecg
+yarn add @nodecg/react-hooks
 # or
-pnpm add use-nodecg
+pnpm add @nodecg/react-hooks
 ```
 
 ## About React Hooks
@@ -43,7 +43,7 @@ Use [eslint-plugin-react-hooks](https://www.npmjs.com/package/eslint-plugin-reac
 -   Allows you to use replicant values in function component.
 
 ```tsx
-import {useReplicant} from 'use-nodecg';
+import {useReplicant} from '@nodecg/react-hooks';
 
 // This component will re-render when the `counter replicant value changes
 export function RunnerName() {
@@ -63,7 +63,7 @@ export function RunnerName() {
 -   Combining with other hooks enables powerful stateful features with function component
 
 ```tsx
-import {useListenFor} from 'use-nodecg';
+import {useListenFor} from '@nodecg/react-hooks';
 
 // Shows modal for 1 second when NodeCG receives 'errorHappened' message from the server
 export function AlertOnMessage() {
