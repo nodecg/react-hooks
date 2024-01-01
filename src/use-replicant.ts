@@ -1,6 +1,15 @@
-import {useEffect, useState} from 'react';
+import {useEffect, useMemo, useState} from 'react';
 import {klona as clone} from 'klona/json';
-import type NodeCG from '@nodecg/types';
+
+type JsonValue = boolean | number | string | null;
+
+type Json = JsonValue | JsonValue[] | {[key: string]: Json};
+
+export type UseReplicantOptions<T> = {
+	defaultValue?: T;
+	bundle?: string;
+	persistent?: boolean;
+};
 
 /**
  * Subscribe to a replicant, returns tuple of the replicant value and `setValue` function.
@@ -10,44 +19,28 @@ import type NodeCG from '@nodecg/types';
  * @param initialValue Initial value to pass to `useState` function
  * @param options Options object. Currently supports the optional `namespace` option
  */
-export const useReplicant = <T>(
+export const useReplicant = <T extends Json>(
 	replicantName: string,
-	initialValue: T,
-	options?: NodeCG.Replicant.Options<T> & {namespace?: string},
-): [T | undefined, (newValue: T) => void] => {
-	const [value, updateValue] = useState<T | undefined>(initialValue);
+	{bundle, defaultValue, persistent}: UseReplicantOptions<T> = {},
+) => {
+	const replicant = useMemo(() => {
+		if (typeof bundle === 'string') {
+			return nodecg.Replicant<T>(replicantName, bundle, {
+				defaultValue,
+				persistent,
+			});
+		}
+		return nodecg.Replicant<T>(replicantName, {defaultValue, persistent});
+	}, [bundle, defaultValue, persistent, replicantName]);
 
-	const replicantOptions =
-		options &&
-		({
-			persistent: options.persistent,
-			schemaPath: options.schemaPath,
-		} satisfies typeof options);
-
-	if (options && 'defaultValue' in options) {
-		(
-			replicantOptions as NodeCG.Replicant.OptionsWithDefault<T>
-		).defaultValue = options.defaultValue;
-	}
-
-	let replicant: NodeCG.ClientReplicant<T>;
-	if (options?.namespace) {
-		replicant = nodecg.Replicant(
-			replicantName,
-			options.namespace,
-			replicantOptions,
-		);
-	} else {
-		replicant = nodecg.Replicant(replicantName, replicantOptions);
-	}
+	const [value, setValue] = useState(replicant.value);
 
 	useEffect(() => {
 		const changeHandler = (newValue: T | undefined): void => {
-			updateValue((oldValue) => {
+			setValue((oldValue) => {
 				if (newValue !== oldValue) {
 					return newValue;
 				}
-				// replicant.value has always the same reference. Cloning to cause re-rendering
 				return clone(newValue);
 			});
 		};
@@ -59,8 +52,12 @@ export const useReplicant = <T>(
 
 	return [
 		value,
-		(newValue) => {
-			replicant.value = newValue;
+		(newValue: T | ((oldValue?: T) => void)) => {
+			if (typeof newValue === 'function') {
+				newValue(replicant.value);
+			} else {
+				replicant.value = newValue;
+			}
 		},
-	];
+	] as const;
 };
