@@ -20,7 +20,7 @@ jobs:
               id: release-please
               with:
                   release-type: node
-                  package-name: use-nodecg
+                  package-name: '@nodecg/react-hooks'
 
     publish:
         needs: release-please
