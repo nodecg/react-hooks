@@ -1,14 +1,14 @@
-import type {JestConfigWithTsJest} from 'ts-jest';
+import type { JestConfigWithTsJest } from "ts-jest";
 
 export default {
 	transform: {
-		'^.+\\.tsx?$': [
-			'ts-jest',
+		"^.+\\.tsx?$": [
+			"ts-jest",
 			{
-				tsconfig: './tests/tsconfig.json',
+				tsconfig: "./tests/tsconfig.json",
 			},
 		],
 	},
 	collectCoverage: true,
-	collectCoverageFrom: ['src/**/*.{ts,tsx}'],
+	collectCoverageFrom: ["src/**/*.{ts,tsx}"],
 } satisfies JestConfigWithTsJest;

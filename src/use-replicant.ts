@@ -1,9 +1,9 @@
-import {useEffect, useMemo, useState} from 'react';
-import {klona as clone} from 'klona/json';
+import { useEffect, useMemo, useState } from "react";
+import { klona as clone } from "klona/json";
 
 type JsonValue = boolean | number | string | null;
 
-type Json = JsonValue | JsonValue[] | {[key: string]: Json};
+type Json = JsonValue | JsonValue[] | { [key: string]: Json };
 
 export type UseReplicantOptions<T> = {
 	defaultValue?: T;
@@ -21,16 +21,16 @@ export type UseReplicantOptions<T> = {
  */
 export const useReplicant = <T extends Json>(
 	replicantName: string,
-	{bundle, defaultValue, persistent}: UseReplicantOptions<T> = {},
+	{ bundle, defaultValue, persistent }: UseReplicantOptions<T> = {},
 ) => {
 	const replicant = useMemo(() => {
-		if (typeof bundle === 'string') {
+		if (typeof bundle === "string") {
 			return nodecg.Replicant<T>(replicantName, bundle, {
 				defaultValue,
 				persistent,
 			});
 		}
-		return nodecg.Replicant<T>(replicantName, {defaultValue, persistent});
+		return nodecg.Replicant<T>(replicantName, { defaultValue, persistent });
 	}, [bundle, defaultValue, persistent, replicantName]);
 
 	const [value, setValue] = useState(replicant.value);
@@ -44,16 +44,16 @@ export const useReplicant = <T extends Json>(
 				return clone(newValue);
 			});
 		};
-		replicant.on('change', changeHandler);
+		replicant.on("change", changeHandler);
 		return () => {
-			replicant.removeListener('change', changeHandler);
+			replicant.removeListener("change", changeHandler);
 		};
 	}, [replicant]);
 
 	return [
 		value,
 		(newValue: T | ((oldValue?: T) => void)) => {
-			if (typeof newValue === 'function') {
+			if (typeof newValue === "function") {
 				newValue(replicant.value);
 			} else {
 				replicant.value = newValue;

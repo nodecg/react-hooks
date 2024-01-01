@@ -1,4 +1,4 @@
-import {useEffect} from 'react';
+import { useEffect } from "react";
 
 export interface UseListenForOptions {
 	bundle?: string;
@@ -7,7 +7,7 @@ export interface UseListenForOptions {
 export const useListenFor = <T>(
 	messageName: string,
 	handler: (message: T) => void,
-	{bundle}: UseListenForOptions = {},
+	{ bundle }: UseListenForOptions = {},
 ): void => {
 	useEffect(() => {
 		if (bundle) {
