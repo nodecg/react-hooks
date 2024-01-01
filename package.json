@@ -47,12 +47,11 @@
 		"esm"
 	],
 	"scripts": {
-		"_prettier": "prettier \"**/*.{js,ts,tsx,md,yml,yaml,json}\"",
 		"build": "del-cli cjs esm && tsc -b src/tsconfig.json src/tsconfig.cjs.json",
-		"fmt": "npm run _prettier -- --write",
+		"fmt": "prettier . --write",
 		"prepublishOnly": "npm run build",
 		"test": "run-s test:*",
-		"test:fmt": "npm run _prettier -- --check",
+		"test:fmt": "prettier . --check",
 		"test:jest": "jest",
 		"test:lint": "eslint \"**/*.{ts,tsx}\""
 	},
@@ -75,7 +74,6 @@
 			"git add"
 		]
 	},
-	"prettier": "@hoishin/prettierrc",
 	"dependencies": {
 		"@nodecg/types": "^2.1.8",
 		"klona": "^2.0.6",
@@ -100,7 +98,7 @@
 		"jest-environment-jsdom": "^29.5.0",
 		"lint-staged": "10.5.1",
 		"npm-run-all": "4.1.5",
-		"prettier": "^2.8.8",
+		"prettier": "^3.1.1",
 		"react": "^18.0.0",
 		"react-dom": "^18.0.0",
 		"sort-package-json": "1.46.1",
