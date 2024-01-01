@@ -57,23 +57,6 @@ export function RunnerName() {
 }
 ```
 
-### `useReplicantOnce`
-
--   Reads specified replicant value once, without subscribing to it.
--   Uses `readReplicant` internally.
--   Returns single value that will be updated once when it reads the value
--   Does NOT subscribe to replicant value changes
-
-```tsx
-import {useReplicantOnce} from 'use-nodecg';
-
-// Only reads the replicant value once and doesn't update
-export function RunnerName() {
-	const count = useReplicantOnce('counter');
-	return <div>{count}</div>;
-}
-```
-
 ### `useListenFor`
 
 -   Subscribes messages with `listenFor`, and unlistens on unmount.
