@@ -1,24 +1,24 @@
 import {useEffect} from 'react';
 
 export interface UseListenForOptions {
-	bundle: string;
+	bundle?: string;
 }
 
 export const useListenFor = <T>(
 	messageName: string,
 	handler: (message: T) => void,
-	options?: UseListenForOptions,
+	{bundle}: UseListenForOptions = {},
 ): void => {
 	useEffect(() => {
-		if (options?.bundle) {
-			nodecg.listenFor(messageName, options.bundle, handler);
+		if (bundle) {
+			nodecg.listenFor(messageName, bundle, handler);
 			return () => {
-				nodecg.unlisten(messageName, options.bundle, handler);
+				nodecg.unlisten(messageName, bundle, handler);
 			};
 		}
 		nodecg.listenFor(messageName, handler);
 		return () => {
 			nodecg.unlisten(messageName, handler);
 		};
-	}, [handler, messageName, options]);
+	}, [handler, messageName, bundle]);
 };
