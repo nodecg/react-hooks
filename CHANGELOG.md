@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.1](https://github.com/nodecg/react-hooks/compare/v1.0.0...v1.0.1) (2024-02-25)
+
+
+### Miscellaneous Chores
+
+* release 1.0.1 ([0ef130e](https://github.com/nodecg/react-hooks/commit/0ef130e29f041aaec4fa0d5301dac4e239fc143f))
+
 ## [1.0.0](https://github.com/nodecg/react-hooks/compare/v0.4.1-2...v1.0.0) (2024-01-01)
 
 
