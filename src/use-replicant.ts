@@ -3,7 +3,7 @@ import { klona as clone } from "klona/json";
 
 type JsonValue = boolean | number | string | null;
 
-type Json = JsonValue | JsonValue[] | { [key: string]: Json };
+type Json = JsonValue | JsonValue[] | { [key: string]: Json } | Json[];
 
 export type UseReplicantOptions<T> = {
 	defaultValue?: T;

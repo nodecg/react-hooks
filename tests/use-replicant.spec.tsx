@@ -72,10 +72,16 @@ interface RunnerNameProps {
 	prefix?: string;
 }
 
+type RunnerNameReplicant = {
+	runner: {
+		name: string;
+	};
+};
+
 const RunnerName: React.FC<RunnerNameProps> = (props) => {
 	const { prefix } = props;
 	const repName = `${prefix ?? "default"}:currentRun`;
-	const [currentRun] = useReplicant(repName, {
+	const [currentRun] = useReplicant<RunnerNameReplicant>(repName, {
 		defaultValue: { runner: { name: "foo" } },
 	});
 	if (!currentRun) {
