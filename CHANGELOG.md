@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.2](https://github.com/nodecg/react-hooks/compare/v1.0.1...v1.0.2) (2024-03-08)
+
+
+### Bug Fixes
+
+* add object arrays ([#274](https://github.com/nodecg/react-hooks/issues/274)) ([be040b3](https://github.com/nodecg/react-hooks/commit/be040b356aab757425a199a1d99d8be1a57cb8f8))
+
 ## [1.0.1](https://github.com/nodecg/react-hooks/compare/v1.0.0...v1.0.1) (2024-02-25)
 
 
