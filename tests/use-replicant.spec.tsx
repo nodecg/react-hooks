@@ -4,7 +4,7 @@
 
 import { EventEmitter } from "events";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { render, act, fireEvent } from "@testing-library/react";
 import type { RenderResult } from "@testing-library/react";
 
@@ -76,6 +76,33 @@ type RunnerNameReplicant = {
 	runner: {
 		name: string;
 	};
+};
+
+interface DummyTypeInterface {
+	runner: {
+		name: string;
+	};
+}
+
+interface DummyTypeInterface2 {
+	foo: Date;
+	bar: () => number;
+}
+
+export const DummyComponent = () => {
+	const [_, setDummy] = useReplicant<DummyTypeInterface>("foo");
+	useEffect(() => {
+		setDummy({ runner: { name: "bar" } });
+		setDummy((oldValue) => {
+			if (oldValue) {
+				oldValue.runner.name += "name";
+			}
+		});
+	}, [setDummy]);
+
+	useReplicant<DummyTypeInterface2>("bar");
+
+	return null;
 };
 
 const RunnerName: React.FC<RunnerNameProps> = (props) => {

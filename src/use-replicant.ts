@@ -1,9 +1,6 @@
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { klona as clone } from "klona/json";
-
-type JsonValue = boolean | number | string | null;
-
-type Json = JsonValue | JsonValue[] | { [key: string]: Json } | Json[];
+import { Jsonify } from "type-fest";
 
 export type UseReplicantOptions<T> = {
 	defaultValue?: T;
@@ -19,7 +16,7 @@ export type UseReplicantOptions<T> = {
  * @param initialValue Initial value to pass to `useState` function
  * @param options Options object. Currently supports the optional `namespace` option
  */
-export const useReplicant = <T extends Json>(
+export const useReplicant = <V, T = Jsonify<V>>(
 	replicantName: string,
 	{ bundle, defaultValue, persistent }: UseReplicantOptions<T> = {},
 ) => {
@@ -50,14 +47,17 @@ export const useReplicant = <T extends Json>(
 		};
 	}, [replicant]);
 
-	return [
-		value,
+	const updateValue = useCallback(
 		(newValue: T | ((oldValue?: T) => void)) => {
 			if (typeof newValue === "function") {
-				newValue(replicant.value);
+				// eslint-disable-next-line @typescript-eslint/no-unsafe-call
+				(newValue as any)(replicant.value);
 			} else {
 				replicant.value = newValue;
 			}
 		},
-	] as const;
+		[replicant],
+	);
+
+	return [value, updateValue] as const;
 };

@@ -77,7 +77,8 @@
 	"dependencies": {
 		"@nodecg/types": "^2.1.8",
 		"klona": "^2.0.6",
-		"tslib": "^2.0.0"
+		"tslib": "^2.0.0",
+		"type-fest": "^4.13.1"
 	},
 	"devDependencies": {
 		"@hoishin/prettierrc": "2.1.1",
