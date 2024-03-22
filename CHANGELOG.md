@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.3](https://github.com/nodecg/react-hooks/compare/v1.0.2...v1.0.3) (2024-03-22)
+
+
+### Bug Fixes
+
+* **types:** allow using interface for replicant type ([367c457](https://github.com/nodecg/react-hooks/commit/367c4571f80555de41e8e764b3635f05fb43cce3))
+
 ## [1.0.2](https://github.com/nodecg/react-hooks/compare/v1.0.1...v1.0.2) (2024-03-08)
 
 
